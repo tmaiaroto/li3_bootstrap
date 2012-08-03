@@ -9,6 +9,19 @@ This application was inspired by and uses Twitter Bootstrap.
 It makes for a very good way to play with Lithium, but is also strong
 enough to be the foundation of many projects.
 
+### What it Comes With
+
+First off, an administrative UI using Twitter Bootstrap that sets up a clean
+and consistent convention for your application.
+
+Then, some of my favorite JavaScript libraries and some helpers. Also, a menu 
+system that allows you to define menus within your code using Lithium's filters.
+Also, a base model that contains a few properties that help extend some extra
+features to your models and controllers. Then some other goodies that are 
+designed to, not get in your way but, help you build your application faster.
+It also comes with submodules for some basic libraries that are value for 
+any application (flash messages, pagination, and so on).
+
 ### How it Works
 
 Basically, you will want to clone this repository and then create a new branch
