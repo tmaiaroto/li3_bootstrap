@@ -1,0 +1,16 @@
+/* 
+    Document   : admin
+    Created on : Jul 20, 2012, 9:32:16 AM
+    Author     : tom
+    Description:
+        Various admin styles not covered by Twitter Bootstrap.
+*/
+
+.no-thumbnail {
+	background: #ccc;
+	width: 240px;
+	height: 160px;
+	display: block;
+	color: #fff;
+	padding: 10px;
+}
