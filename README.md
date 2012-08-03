@@ -74,10 +74,7 @@ You will need to clone this repo and then run a ```git submodule init``` and
 ```git submodule update``` command. It's also important to note that some of 
 these libraries have submodules themselves. You can try running something like 
 ```git submodule update --init --recursive``` to get all submodules within the 
-submodules. However, for your reference, currently the only libraries with 
-submodules are li3_facebook and li3_qa. If there is any confusion or trouble, 
-there is a text file within the libraries folder that lists the libraries you'll 
-need and you could simply go track those down if need be.
+submodules.
 
 It should be a snap to get all the code...And once you have all the code, you'll 
 need to set this up on your web server. I personally prefer PHP-FPM and Nginx, 
