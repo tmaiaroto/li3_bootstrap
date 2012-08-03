@@ -17,6 +17,9 @@ use lithium\core\Libraries;
 
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
 	
+	//var_dump($params['params']);
+	//exit();
+	
 	if(isset($params['params']['library'])) {
 		// Instead of using LITHIUM_APP_PATH,for future compatibility.
 		$defaultAppConfig = Libraries::get('li3Bootstrap');

@@ -45,6 +45,13 @@ Router::connect("/admin/{:args}", array('admin' => true), array('continue' => tr
 	'controller', 'admin'
 )));
 
+Router::connect("/admin/plugin/{:library}", array('admin' => true, 'controller' => 'pages', 'action' => 'view', 'args' => array()), array('continue' => true, 'persist' => array(
+	'controller', 'admin', 'library'
+)));
+Router::connect("/admin/plugin/{:library}/{:args}", array('admin' => true, 'controller' => 'pages', 'action' => 'view'), array('continue' => true, 'persist' => array(
+	'controller', 'admin', 'library'
+)));
+
 /**
  * Routes for reporting JSON, CSV, XML, etc.
  */
@@ -97,6 +104,9 @@ if (!Environment::is('production')) {
 /**
  * Routes for pagination
  */
+Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}");
+Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
+
 Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}");
 Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
 
@@ -112,5 +122,7 @@ Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
  * In almost all cases, custom routes should be added above this one, since route-matching works in
  * a top-down fashion.
  */
+Router::connect("/plugin/{:library}/{:controller}/{:action}/{:args}");
+
 Router::connect("/{:controller}/{:action}/{:args}");
 ?>
