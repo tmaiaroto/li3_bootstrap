@@ -29,8 +29,9 @@ class BootstrapMenu extends \lithium\template\Helper {
 		$defaults = array(
 			//'cache' => '+1 day'
 			'cache' => false,
-			'menu_id' => '',
-			'menu_class' => '',
+			'menuId' => '',
+			'menuClass' => '',
+			'activeClass' => 'active'
 		);
 		$options += $defaults;
 		
@@ -62,10 +63,11 @@ class BootstrapMenu extends \lithium\template\Helper {
 		
 		// Format the HTML for the menu
 		// option for additional custom menu class
-		$menu_class = ' ' . $options['menu_class'];
+		$menuClass = ' ' . $options['menuClass'];
+		$activeClassName = ' ' . $options['activeClass'];
 		
 		$string = "\n";
-		$string .= '<ul class="nav nav-pills ' . $name . '_menu' . $menu_class . '" id="' . $options['menu_id'] . '">';
+		$string .= '<ul class="nav nav-pills ' . $name . '_menu' . $menuClass . '" id="' . $options['menuId'] . '">';
 		$string .= "\n";
 		
 		if(is_array($menu)) {
@@ -86,22 +88,22 @@ class BootstrapMenu extends \lithium\template\Helper {
 					} catch(\Exception $e) {
 					}
 					
-					// /dashboard is the customer_ prefixed actions and /admin is of course admin_ prefix actions
-					$current_class = ($matched_route == $here || (strstr($here, '/admin' . $matched_route)) || (strstr($here, '/dashboard' . $matched_route))) ? ' active':'';
+					// /admin is of course admin_ prefix actions
+					$activeClass = ($matched_route == $here || (strstr($here, '/admin' . $matched_route))) ? $activeClassName:'';
 					
 					// This plus the Router::match() above really needs some love.
 					// Less if statements...Should be some shorter/nicer way to write it.
 					if(!empty($activeIf)) {
 						if(isset($activeIf['library']) && isset($this->_context->request()->params['library'])) {
 							if($activeIf['library'] == $this->_context->request()->params['library']) {
-							$current_class = 'active';
+							$activeClass = $activeClassName;
 							}
 						} elseif($activeIf['controller'] == $this->_context->request()->params['controller']) {
-							$current_class = 'active';
+							$activeClass = $activeClassName;
 						}
 					}
 					
-					$string .= '<li class="dropdown ' . $current_class . '">' . $this->_context->html->link($title, $url, $options += array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
+					$string .= '<li class="dropdown ' . $activeClass . '">' . $this->_context->html->link($title, $url, $options += array('class' => 'dropdown-toggle', 'data-toggle' => 'dropdown'));
 					// sub menu items
 					if(count($sub_items) > 0) {
 						$string .= "\n\t";

@@ -6,20 +6,31 @@
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
 		</a>
-		<?php echo ($this->request()->user) ? $this->html->link('Scottys', array('controller' => 'users', 'action' => 'dashboard'), array('class' => 'brand')):$this->html->link('Lithium Bootstrap', '/', array('class' => 'brand')); ?>
-		<div class="btn-group pull-right">
-		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-			<i class="icon-user"></i> <?=$user['first_name'] . ' ' . $user['last_name']; ?>
-			<span class="caret"></span>
-		</a>
-		<ul class="dropdown-menu">
-			<li><a href="#">Profile</a></li>
-			<li class="divider"></li>
-			<li><a href="/logout">Sign Out</a></li>
-		</ul>
-		</div>
+		
+		<?=$this->html->link('Lithium Bootstrap', '/', array('class' => 'brand')); ?>
+		
+		<?php if($user = $this->request()->user) { ?>
+			<div class="btn-group pull-right">
+			<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+				<?php
+				// Some common fields...Adjust this for your application's needs.
+				// This also assumes you set the user object in the request.
+				$username = isset($user['firstName']) ? $user['firstName'] . ' ' . $user['firstName']:'';
+				$username = isset($user['username']) ? $user['username']:$username;
+				?>
+				<i class="icon-user"></i> <?=$username; ?>
+				<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Profile</a></li>
+				<li class="divider"></li>
+				<li><a href="/logout">Sign Out</a></li>
+			</ul>
+			</div>
+		<?php } ?>
+		
 		<div class="nav-collapse">
-			<?=$this->bootstrapMenu->static_menu('public', array('menu_class' => 'nav', 'current_class' => 'active')); ?>
+			<?=$this->bootstrapMenu->static_menu('public', array('menuClass' => 'nav', 'activeClass' => 'active')); ?>
 		</div><!--/.nav-collapse -->
 	</div>
 	</div>

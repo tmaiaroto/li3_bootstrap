@@ -6,32 +6,57 @@
  * which can, of course, lead to all sort of maintenance issues.
  * 
  * Ultimately, we need to allow the following to happen:
- * 1. If nothing is passed in the Libraries::add() config, then the layout and template will be used from the library (default behavior).
- * 2. If Libraries::add() passes a config to use layout templates from the main app, (the default.html.php or a specific template)...use that.
- * 3. If Libraries::add() passes a config to look for view templates in the main app, do so.
- * 4. Also consider elements and how they may need to work.
+ * 1. If there are no override templates, then the layout and view template will be used from the library (default behavior).
+ * 2. If there are templates placed in `/views/_libraries/library_name/`, use those.
+ * 3. Try the main application as a last ditch effort. Libraries without templates will assume the main app has them.
+ * 4. If Libraries::add() passes a config that specifically says to use templates from the main app, do so.
+ * 5. Also consider elements and how they may need to work.
  */
 use lithium\action\Dispatcher;
 use lithium\core\Libraries;
 
 Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
-
+	
 	if(isset($params['params']['library'])) {
+		// Instead of using LITHIUM_APP_PATH,for future compatibility.
+		$defaultAppConfig = Libraries::get('li3Bootstrap');
+		$appPath = $defaultAppConfig['path'];
 
+		$libConfig = Libraries::get($params['params']['library']);
+		
 		/**
 		 * LAYOUTS AND TEMPLATES
 		 * Note the path ordering for how templates override others.
-		 * 1. Your overrides.
-		 * 2. The default render paths for a library.
+		 * First, your overrides and then the default render paths for a library.
+		 * Last, (worst case) it tries to grab what it can from the main application.
 		 */
 		$paths['layout'] = array(
-			LITHIUM_APP_PATH . '/views/_libraries/' . $params['params']['library'] . '/layouts/{:layout}.{:type}.php',
-			'{:library}/views/layouts/{:layout}.{:type}.php'
+			$appPath . '/views/_libraries/' . $params['params']['library'] . '/layouts/{:layout}.{:type}.php',
+			'{:library}/views/layouts/{:layout}.{:type}.php',
+			$appPath . '/views/layouts/{:layout}.{:type}.php'
 		);
 		$paths['template'] = array(
-			LITHIUM_APP_PATH . '/views/_libraries/' . $params['params']['library'] . '/{:controller}/{:template}.{:type}.php',
-			'{:library}/views/{:controller}/{:template}.{:type}.php'
+			$appPath . '/views/_libraries/' . $params['params']['library'] . '/{:controller}/{:template}.{:type}.php',
+			'{:library}/views/{:controller}/{:template}.{:type}.php',
+			$appPath . '/views/{:controller}/{:template}.{:type}.php'
 		);
+		
+		/*
+		 * Condition #4 here. This will use Lithium Bootstrap's core layout templates.
+		 * Libraries added with this configuration option were designed specifically
+		 * for use with Lithium Bootstrap and wish to use it's default design.
+		 * 
+		 * Of course, there is still template fallback support in case the user
+		 * has changed up their copy of Lithium Bootstrap...But the library is
+		 * now putting the priority on the Lithium Bootstrap default layout.
+		 */
+		if(isset($libConfig['useBootstrapLayout']) && $libConfig['useBootstrapLayout'] === true) {
+			$paths['layout'] = array(
+				$appPath . '/views/layouts/{:layout}.{:type}.php',
+				$appPath . '/views/_libraries/' . $params['params']['library'] . '/layouts/{:layout}.{:type}.php',
+				'{:library}/views/layouts/{:layout}.{:type}.php'
+			);
+		}
 
 		/**
 		 * ELEMENTS
@@ -44,9 +69,9 @@ Dispatcher::applyFilter('_callable', function($self, $params, $chain) {
 		 * 3. Common elements that may have came with Lithium Bootstrap (or that you added) that a library wants to use.
 		 */
 		$paths['element'] = array( 
-			LITHIUM_APP_PATH . '/views/_libraries/' . $params['params']['library'] . '/elements/{:template}.{:type}.php',
+			$appPath . '/views/_libraries/' . $params['params']['library'] . '/elements/{:template}.{:type}.php',
 			'{:library}/views/elements/{:template}.{:type}.php',
-			LITHIUM_APP_PATH . '/views/elements/{:template}.{:type}.php'
+			$appPath . '/views/elements/{:template}.{:type}.php'
 		);
 
 		$params['options']['render']['paths'] = $paths;

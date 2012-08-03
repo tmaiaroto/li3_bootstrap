@@ -188,24 +188,33 @@ class Html extends \lithium\template\helper\Html {
 	 * @options Array Various options for the form and HTML
 	 * @return String HTML and JS for the form
 	*/
-	public function query_form($options=array()) {
-		$options += array('key' => 'q', 'form_class' => '', 'class' => 'search', 'button_class' => '', 'button_copy' => 'Submit', 'div' => 'search_form', 'label' => false);
+	public function queryForm($options=array()) {
+		$options += array(
+			'key' => 'q',
+			'formClass' => '',
+			'inputClass' => 'search',
+			'buttonClass' => '',
+			'buttonLabel' => 'Submit',
+			'div' => true,
+			'divClass' => 'search_form',
+			'label' => false
+		);
 		$output = '';
 		
 		$form_id = sha1('asd#@jsklvSx893S@gMp8oi' . time());
 		
-		$output .= (!empty($options['div'])) ? '<div class="' . $options['div'] . '">':'';
+		$output .= ($options['div']) ? '<div class="' . $options['divClass'] . '">':'';
 		
 			$output .= (!empty($options['label'])) ? '<label>' . $options['label'] . '</label>':'';
-			$output .= '<form class="' . $options['form_class'] . '" id="' . $form_id . '" onSubmit="';
+			$output .= '<form class="' . $options['formClass'] . '" id="' . $form_id . '" onSubmit="';
 			$output .= 'window.location = window.location.href + \'?\' + $(\'#' . $form_id . '\').serialize();';
 			$output .= '">';
 				$value = (isset($_GET[$options['key']])) ? $_GET[$options['key']]:'';
-				$output .= '<input name="' . $options['key'] . '" value="' . $value . '" class="' . $options['class'] . '" />';
-				$output .= '<input type="submit" class="' . $options['button_class'] . '" value="' . $options['button_copy'] . '" />';
+				$output .= '<input name="' . $options['key'] . '" value="' . $value . '" class="' . $options['inputClass'] . '" />';
+				$output .= '<input type="submit" class="' . $options['buttonClass'] . '" value="' . $options['buttonLabel'] . '" />';
 			$output .= '</form>';
 			
-		$output .= (!empty($options['div'])) ? '</div>':'';
+		$output .= ($options['div']) ? '</div>':'';
 		
 		return $output;
 	}

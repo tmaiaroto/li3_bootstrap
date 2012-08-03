@@ -14,15 +14,18 @@ class BaseModel extends \lithium\data\Model {
 	public $search_schema = array();
 	
 	public static function __init() {
-		 $class =  __CLASS__;
-		 
-		 // Note: If any of the following properties are not set in any extended model, 
-		 // they will be picked up from this base model.
-		 $class::_object()->search_schema = static::_object()->search_schema += $class::_object()->search_schema;
-		 $class::_object()->url_field = static::_object()->url_field;
-		 $class::_object()->url_separator = static::_object()->url_separator;
-		 
-		 parent::__init();
+		$class =  __CLASS__;
+
+		// Note: If any of the following properties are not set in any extended model, 
+		// they will be picked up from this base model.
+		$class::_object()->search_schema = static::_object()->search_schema += $class::_object()->search_schema;
+		$class::_object()->url_field = static::_object()->url_field;
+		$class::_object()->url_separator = static::_object()->url_separator;
+
+		// Future compatibility.
+		if(method_exists('\lithium\data\Model', '__init')) {
+			parent::__init();
+		}
 	}
 	
 	/**
