@@ -91,4 +91,21 @@ require __DIR__ . '/bootstrap/logging.php';
  * Feel free to use this file if you like for your own application.
  */
 // require __DIR__ . '/bootstrap/menu.php';
+
+/**
+ * Last, but not least, the template override filter.
+ * It allows you to override any library's templates with your own.
+ * This way, you can take any given library that may contain the 
+ * functionality you want and simply redesign it to fit your app
+ * without modifying the templates in the library.
+ * 
+ * You do this through configuration options passed when the 
+ * library is added. By deafult it will first look for templates
+ * in the `views/_libraries/library_name` and then 
+ * `views/_libraries/layouts/library_name`directories.
+ * 
+ * Don't forget, if the library requires extensive modification to
+ * work with your application, you can always branch it =)
+ */
+require __DIR__ . '/bootstrap/templates.php';
 ?>
