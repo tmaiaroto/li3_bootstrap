@@ -22,3 +22,11 @@ div.pagination-condensed ul li a {
 	line-height: 26px;
 	padding: 0 10px;
 }
+
+.input-span3 {
+	width: 192px;
+}
+
+div.error {
+	color: #b94a48;
+}

@@ -192,11 +192,12 @@ class Html extends \lithium\template\helper\Html {
 		$options += array(
 			'key' => 'q',
 			'formClass' => '',
-			'inputClass' => 'search',
-			'buttonClass' => '',
+			'inputClass' => 'input-span3',
+			'buttonClass' => 'btn',
+			'labelClass' => '',
 			'buttonLabel' => 'Submit',
 			'div' => true,
-			'divClass' => 'search_form',
+			'divClass' => '',
 			'label' => false
 		);
 		$output = '';
@@ -205,13 +206,13 @@ class Html extends \lithium\template\helper\Html {
 		
 		$output .= ($options['div']) ? '<div class="' . $options['divClass'] . '">':'';
 		
-			$output .= (!empty($options['label'])) ? '<label>' . $options['label'] . '</label>':'';
+			$output .= (!empty($options['label'])) ? '<label class="' . $options['labelClass'] . '">' . $options['label'] . '</label>':'';
 			$output .= '<form class="' . $options['formClass'] . '" id="' . $form_id . '" onSubmit="';
 			$output .= 'window.location = window.location.href + \'?\' + $(\'#' . $form_id . '\').serialize();';
 			$output .= '">';
 				$value = (isset($_GET[$options['key']])) ? $_GET[$options['key']]:'';
-				$output .= '<input name="' . $options['key'] . '" value="' . $value . '" class="' . $options['inputClass'] . '" />';
-				$output .= '<input type="submit" class="' . $options['buttonClass'] . '" value="' . $options['buttonLabel'] . '" />';
+				$output .= '<input type="text" name="' . $options['key'] . '" value="' . $value . '" class="' . $options['inputClass'] . '" />';
+				$output .= '<button type="submit" class="' . $options['buttonClass'] . '">' . $options['buttonLabel'] . '</button>';
 			$output .= '</form>';
 			
 		$output .= ($options['div']) ? '</div>':'';
