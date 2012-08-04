@@ -14,3 +14,11 @@
 	color: #fff;
 	padding: 10px;
 }
+
+div.pagination-condensed {
+	margin: 0px;
+}
+div.pagination-condensed ul li a {
+	line-height: 26px;
+	padding: 0 10px;
+}

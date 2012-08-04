@@ -52,6 +52,8 @@ Router::connect("/admin/plugin/{:library}/{:args}", array('admin' => true, 'cont
 	'controller', 'admin', 'library'
 )));
 
+
+
 /**
  * Routes for reporting JSON, CSV, XML, etc.
  */
@@ -105,9 +107,11 @@ if (!Environment::is('production')) {
  * Routes for pagination
  */
 Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}");
+Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}/limit-{:limit:[0-9]+}/{:args}");
 Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
 
 Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}");
+Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/limit-{:limit:[0-9]+}");
 Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
 
 /**

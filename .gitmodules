@@ -4,6 +4,3 @@
 [submodule "libraries/li3_flash_message"]
 	path = libraries/li3_flash_message
 	url = git://github.com/michaelhue/li3_flash_message.git
-[submodule "libraries/li3_paginate"]
-	path = libraries/li3_paginate
-	url = git://github.com/primetheus/li3_paginate.git
