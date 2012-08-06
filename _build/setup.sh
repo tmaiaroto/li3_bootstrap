@@ -2,8 +2,8 @@
 
 echo ""
 echo "Setting application directory permissions..."
-chmod 777 resources -R
-chmod 775 config/bootstrap/libraries -R
+chmod -R 777 resources
+chmod -R 775 config/bootstrap/libraries
 echo ""
 
 echo ""
