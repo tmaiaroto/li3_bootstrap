@@ -12,5 +12,12 @@ git submodule update --init --recursive
 echo ""
 
 echo ""
+echo "Creating a symlink to li3 for you..."
+chmod +x libraries/lithium/console/li3
+ln -s libraries/lithium/console/li3 li3
+alias li3='./li3'
+echo ""
+
+echo ""
 echo "Installation complete."
 echo ""
