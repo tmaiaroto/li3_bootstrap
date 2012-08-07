@@ -15,7 +15,8 @@
 				<?php
 				// Some common fields...Adjust this for your application's needs.
 				// This also assumes you set the user object in the request.
-				$username = isset($user['firstName']) ? $user['firstName'] . ' ' . $user['firstName']:'';
+				$username = isset($user['firstName']) ? $user['firstName']:'';
+				$username = isset($user['lastName']) ? $username . ' ' . $user['lastName']:'';
 				$username = isset($user['username']) ? $user['username']:$username;
 				?>
 				<i class="icon-user"></i> <?=$username; ?>

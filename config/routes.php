@@ -66,12 +66,6 @@ Router::connect("/", array('controller' => 'pages', 'action' => 'view', 'args' =
 Router::connect("/page/{:args}", array('controller' => 'pages', 'action' => 'view', 'args' => array('home'), 'persist' => false, 'continue' => false));
 
 /**
- * Special short routes.
-*/
-Router::connect("/login", array('controller' => 'users', 'action' => 'login'));
-Router::connect("/logout", array('controller' => 'users', 'action' => 'logout'));
-
-/**
  * Add the testing routes. These routes are only connected in non-production environments, and allow
  * browser-based access to the test suite for running unit and integration tests for the Lithium
  * core, as well as your own application and any other loaded plugins or frameworks. Browse to
