@@ -48,7 +48,7 @@ class Bootstrap extends \lithium\console\Command {
 		}
 		
 		if(file_exists($libraryAddFile)) {
-			if(!empty(Libraries::get($packageName))) {
+			if(Libraries::get($packageName)) {
 				echo "Installation successful!" . PHP_EOL;
 			} else {
 				echo "Installation failed. The library was added but it does not seem to load." . PHP_EOL;

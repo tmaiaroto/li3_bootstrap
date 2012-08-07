@@ -61,10 +61,10 @@ command tool. This works much like a Linux package manager. This command class
 comes with Lithium Bootstrap.
 
 You can search for libraries:
-```li3 package search "swift mailer"```
+```li3 bootstrap search "swift mailer"```
 
 You can install libraries (and dependencies):
-```li3 package install li3boostrap_access```
+```li3 bootstrap install li3b_users```
 
 Provided the user has access to git. Otherwise, when trying to clone the
 repos or add them as submodules, there'll be some problems.
