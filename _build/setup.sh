@@ -13,7 +13,7 @@ echo ""
 
 echo ""
 echo "Creating a symlink for core assets..."
-(cd webroot && ln -s ../libraries/li3b_core/webroot _core)
+(cd webroot && ln -s ../libraries/li3b_core/webroot li3b_core)
 echo ""
 
 echo ""

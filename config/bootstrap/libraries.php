@@ -123,6 +123,25 @@ Libraries::add('app', array('default' => true));
  * Add the Lithium Bootstrap core library.
  * This CAN NOT be placed under config/bootstrap/libraries because
  * this core library would include itself then. That would be bad.
+ * 
+ * Note: If 'symlinkAssets' is set to true, then li3b_core will
+ * NOT include the filter on the Dispatcher that media.php calls.
+ * This means all `webroot` directories for libraries will need 
+ * to be symlinked to the main application's `webroot` directory.
+ * 
+ * If using symlinks for static assets, you will gain a little
+ * bit of performance. Lithium Bootstrap will work either way
+ * and upon library installation (with the Lithium Bootstrap
+ * console command), a symlink will be created if `symlinkAssets`
+ * is set to true here. Either way, a symlink for `li3b_core` has
+ * likely already been added for you if you ran the setup.sh script.
+ * So you can access core Lithium Bootstrap assets either way.
+ * ie. /li3b_core/css/bootstrap.css OR /li3b_core/css/bootstrap.css
+ * 
+ * Note: You can change this to false if you don't want to use symlinks.
+ * BUT, if you flip this setting back and forth keep in mind that
+ * you may have to symlink some directories in the future depending
+ * on the setting of this option at the time of library installation.
  */
-Libraries::add('li3b_core');
+Libraries::add('li3b_core', array('symlinkAssets' => true));
 ?>
