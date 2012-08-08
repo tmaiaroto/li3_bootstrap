@@ -1,5 +1,6 @@
 libraries/*
 config/bootstrap/libraries/*
 resources/tmp/*
+webroot/_core
 .DS_Store
 li3

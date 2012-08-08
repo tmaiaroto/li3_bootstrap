@@ -115,24 +115,14 @@ Libraries::add('lithium');
  * Add the application.  You can pass a `'path'` key here if this bootstrap file is outside of
  * your main application, but generally you should not need to change any settings.
  * 
- * Please note: You CAN change the namespace in each of the core classes for 
- * Lithium Bootstrap and update the name below...But you will need to be mindful
- * that if you wish to receive updates, you may have some adjustments to make
- * and some conflicts to resolve.
+ * You should probably change this namespace to something specific for your application.
  */
-Libraries::add('li3Bootstrap', array('default' => true));
+Libraries::add('app', array('default' => true));
 
 /**
- * Add some plugins:
+ * Add the Lithium Bootstrap core library.
+ * This CAN NOT be placed under config/bootstrap/libraries because
+ * this core library would include itself then. That would be bad.
  */
-
-/**
- * This includes all libraries added in the `config/libraries` directory.
- * This allows for this file to remain coflict free and allows the li3 console
- * command to create new files in that directory rather than trying to modify
- * this one, which could also lead to conflicts and other issues.
-*/
-foreach (glob(__DIR__ . '/libraries/*.php') as $filename) {
-	include $filename;
-}
+Libraries::add('li3b_core');
 ?>

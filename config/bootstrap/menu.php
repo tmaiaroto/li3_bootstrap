@@ -1,5 +1,5 @@
 <?php
-use li3Bootstrap\models\BootstrapMenu as Menu;
+use li3b_core\models\BootstrapMenu as Menu;
 
 /**
  * Apply filters to Menu::static_menu() in order to alter and create new menus.

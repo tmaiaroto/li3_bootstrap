@@ -12,6 +12,11 @@ git submodule update --init --recursive
 echo ""
 
 echo ""
+echo "Creating a symlink for core assets..."
+(cd webroot && ln -s ../libraries/li3b_core/webroot _core)
+echo ""
+
+echo ""
 echo "Creating a symlink to li3 for you..."
 chmod +x libraries/lithium/console/li3
 ln -s libraries/lithium/console/li3 li3

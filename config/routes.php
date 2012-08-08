@@ -20,62 +20,6 @@ use lithium\net\http\Router;
 use lithium\core\Environment;
 use lithium\action\Dispatcher;
 
-// Set the evironment
-if($_SERVER['HTTP_HOST'] == 'li3bootstrap.dev.local' || $_SERVER['HTTP_HOST'] == 'li3bootstrap.local' || $_SERVER['HTTP_HOST'] == 'localhost') {
-	Environment::set('development');
-}
-
-/**
- * Dispatcher rules to rewrite admin actions.
- */
-Dispatcher::config(array(
-	'rules' => array(
-		'admin' => array('action' => 'admin_{:action}')
-	)
-));
-
-/**
- * Pass-through routes for admin requests.
- * Both /admin and /admin/page Will take the user to the admin dashboard.
- */
-Router::connect("/admin", array('admin' => true, 'controller' => 'pages', 'action' => 'view', 'args' => array()), array('continue' => true, 'persist' => array(
-	'controller', 'admin'
-)));
-Router::connect("/admin/{:args}", array('admin' => true), array('continue' => true, 'persist' => array(
-	'controller', 'admin'
-)));
-
-Router::connect("/admin/plugin/{:library}", array('admin' => true, 'controller' => 'pages', 'action' => 'view', 'args' => array()), array('continue' => true, 'persist' => array(
-	'controller', 'admin', 'library'
-)));
-Router::connect("/admin/plugin/{:library}/{:args}", array('admin' => true, 'controller' => 'pages', 'action' => 'view'), array('continue' => true, 'persist' => array(
-	'controller', 'admin', 'library'
-)));
-
-
-
-/**
- * Routes for reporting JSON, CSV, XML, etc.
- */
-Router::connect('/{:args}.{:type:json|csv|xml}', array(), array('continue' => true));
-
-/**
- * Connect the static pages.
- */
-Router::connect("/", array('controller' => 'pages', 'action' => 'view', 'args' => array('home'), 'persist' => false, 'continue' => false));
-Router::connect("/page/{:args}", array('controller' => 'pages', 'action' => 'view', 'args' => array('home'), 'persist' => false, 'continue' => false));
-
-/**
- * Add the testing routes. These routes are only connected in non-production environments, and allow
- * browser-based access to the test suite for running unit and integration tests for the Lithium
- * core, as well as your own application and any other loaded plugins or frameworks. Browse to
- * [http://path/to/app/test](/test) to run tests.
- */
-if (!Environment::is('production')) {
-	Router::connect('/test/{:args}', array('controller' => 'lithium\test\Controller'));
-	Router::connect('/test', array('controller' => 'lithium\test\Controller'));
-}
-
 /**
  * ### Database object routes
  *
@@ -98,17 +42,6 @@ if (!Environment::is('production')) {
 // Router::connect('/{:controller}/{:action}/{:id:[0-9a-f]{24}}');
 
 /**
- * Routes for pagination
- */
-Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}");
-Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}/limit-{:limit:[0-9]+}/{:args}");
-Router::connect("/plugin/{:library}/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
-
-Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}");
-Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/limit-{:limit:[0-9]+}");
-Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
-
-/**
  * Finally, connect the default route. This route acts as a catch-all, intercepting requests in the
  * following forms:
  *
@@ -120,7 +53,5 @@ Router::connect("/{:controller}/{:action}/page-{:page:[0-9]+}/{:args}");
  * In almost all cases, custom routes should be added above this one, since route-matching works in
  * a top-down fashion.
  */
-Router::connect("/plugin/{:library}/{:controller}/{:action}/{:args}");
-
 Router::connect("/{:controller}/{:action}/{:args}");
 ?>

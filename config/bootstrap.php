@@ -36,7 +36,7 @@ require __DIR__ . '/bootstrap/libraries.php';
  * rules of the `ErrorHandler` class to provide a high level of control over managing exceptions in
  * your application, with no impact on framework or application code.
  */
-require __DIR__ . '/bootstrap/errors.php';
+// require __DIR__ . '/bootstrap/errors.php';
 
 /**
  * This file contains configurations for connecting to external caching resources, as well as
@@ -60,7 +60,7 @@ require __DIR__ . '/bootstrap/action.php';
  * This file contains configuration for session (and/or cookie) storage, and user or web service
  * authentication.
  */
-require __DIR__ . '/bootstrap/session.php';
+// require __DIR__ . '/bootstrap/session.php';
 
 /**
  * This file contains your application's globalization rules, including inflections,
@@ -73,39 +73,16 @@ require __DIR__ . '/bootstrap/session.php';
  * This file contains configurations for handling different content types within the framework,
  * including converting data to and from different formats, and handling static media assets.
  */
-require __DIR__ . '/bootstrap/media.php';
+// require __DIR__ . '/bootstrap/media.php';
 
 /**
  * This file configures console filters and settings, specifically output behavior and coloring.
  */
-// require __DIR__ . '/bootstrap/console.php';
-
-/**
- * This file contains confiuration for logging.
- * Log files will be written to /resources/tmp/logs
- */
-require __DIR__ . '/bootstrap/logging.php';
+require __DIR__ . '/bootstrap/console.php';
 
 /**
  * Sets up additional menus and/or modifies default menus.
  * Feel free to use this file if you like for your own application.
  */
 // require __DIR__ . '/bootstrap/menu.php';
-
-/**
- * Last, but not least, the template override filter.
- * It allows you to override any library's templates with your own.
- * This way, you can take any given library that may contain the 
- * functionality you want and simply redesign it to fit your app
- * without modifying the templates in the library.
- * 
- * You do this through configuration options passed when the 
- * library is added. By deafult it will first look for templates
- * in the `views/_libraries/library_name` and then 
- * `views/_libraries/layouts/library_name`directories.
- * 
- * Don't forget, if the library requires extensive modification to
- * work with your application, you can always branch it =)
- */
-require __DIR__ . '/bootstrap/templates.php';
 ?>
