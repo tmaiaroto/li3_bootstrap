@@ -9,8 +9,8 @@ This application was inspired by and uses Twitter Bootstrap.
 It makes for a very good way to play with Lithium, but is also strong
 enough to be the foundation of many projects.
 
-Just want to get started? To install, create a new web site on your server
-and in the webroot, execute the following command:
+Just want to get started? To install, create a virtual host (or whatever you do)
+and in the empty site webroot, execute the following command:
 ```bash <(curl -s https://raw.github.com/tmaiaroto/li3_bootstrap/master/_build/bootstrap.sh)```
 
 ### What it Comes With
