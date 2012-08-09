@@ -9,6 +9,10 @@ This application was inspired by and uses Twitter Bootstrap.
 It makes for a very good way to play with Lithium, but is also strong
 enough to be the foundation of many projects.
 
+Just want to get started? To install, create a new web site on your server
+and in the webroot, execute the following command:
+```bash <(curl -s https://raw.github.com/tmaiaroto/li3_bootstrap/master/_build/bootstrap.sh)```
+
 ### What it Comes With
 
 First off, an administrative UI using Twitter Bootstrap that sets up a clean
@@ -52,19 +56,25 @@ more robust in the future.
 
 ### Setup Instructions
 
-This is going to be a little lengthy, but for those of you who are familiar 
-with Lithium, you basically just want to get all the code here and setup your 
-local dev environment as normal. The lithium framework has already been added 
-as a submodule for this application. So has a flash messages library and, of
-course, the li3b_core library which holds all of the magic.
+You may wish to familiarize yourself with Lithium, its requirements,
+and how it's generally configured if you haven't already.
 
-I'd strongly suggest running the setup script...
+Note: Many plugins for Lithium Bootstrap use MongoDB. Though Lithium Bootstrap
+itself does not rely upon any database, you may wish to have MongoDB setup
+and running on your server or local environment. Especially while this is
+a young project, since I kinda cut MySQL out of my life...You'll have a hard
+time finding many plugins/libraries using a database other than MongoDB since
+there won't be many other contributors.
 
-Just a note: Most libraries built for this application primarily use MongoDB, 
-though it is not required. There is nothing in this base application that 
-requires a database at all.
+I'd strongly suggest running the setup script after cloning this repository.
+If you run the bootstrap.sh from remote, then it will automatically run
+the setup script for you. If you did run that (command above), congratulations,
+you set up Lithium Bootstrap the easy way. If the site loads, you're set.
+If not, read over these instructions to see what's going on and what you
+may need to double check with regard to configuration.
 
-So, the long version...
+The hard way (it's not that hard)...
+
 You will need to clone this repo and then run:
 ```git submodule update --init --recursive```
 This will setup all the code you need...But you still have to ensure
