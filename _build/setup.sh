@@ -4,6 +4,7 @@ echo ""
 echo "Setting application directory permissions..."
 chmod -R 777 resources
 chmod -R 775 config/bootstrap/libraries
+chmod -R 775 config/bootstrap/connections
 echo ""
 
 echo ""
