@@ -33,6 +33,8 @@
  */
 use lithium\data\Connections;
 
+/*
+ * Added in li3b_core ... For now.
 Connections::add(
 	'li3b_mongodb', array(
 		'production' => array(
@@ -53,6 +55,8 @@ Connections::add(
 		)
 	)
 );
+ * 
+ */
 
 /*
  * TODO: Add mysql... of course there's usernames and passwords... 
