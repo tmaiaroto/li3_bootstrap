@@ -18,6 +18,14 @@ and in the empty site webroot, execute the following command:
 First off, an administrative UI using Twitter Bootstrap that sets up a clean
 and consistent convention for your application.
 
+Font Awesome has been used to replace the Twitter Bootstrap default Glyphish
+icon set. You can still use those icons if you wish, the original Twitter
+Bootstrap CSS files with icons can be found in the li3b_core library webroot.
+Note that some of these may be out of date, you can always include your own
+CSS, JavaScript, and override the default layout templates (or use new ones).
+Every now and then you can expct li3b_core to be updated with newer versions
+of Twitter Bootstrap and Font Awesome.
+
 Then, some of my favorite JavaScript libraries and some helpers. Also, a menu
 system that allows you to define menus within your code using Lithium's filters
 Also, a base model that contains a few properties that help extend some extra
