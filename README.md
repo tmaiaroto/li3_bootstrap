@@ -53,11 +53,10 @@ To make adding libraries built for Lithium Bootstrap easier, there is a console
 command tool. This works much like a Linux package manager. This command class
 comes with Lithium Bootstrap via the li3b_core library.
 
-You can search for libraries:
-```li3 bootstrap search "swift mailer"```
-
 You can install libraries (and dependencies):
 ```li3 bootstrap install li3b_users```
+
+```li3 bootstrap install li3b_gallery```
 
 This will also install dependencies and such. This tool will become
 more robust in the future.
