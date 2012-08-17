@@ -53,7 +53,8 @@ To make adding libraries built for Lithium Bootstrap easier, there is a console
 command tool. This works much like a Linux package manager. This command class
 comes with Lithium Bootstrap via the li3b_core library.
 
-You can install libraries (and dependencies):
+You can install libraries (and dependencies), for example:
+
 ```li3 bootstrap install li3b_users```
 
 ```li3 bootstrap install li3b_gallery```
