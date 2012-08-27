@@ -7,6 +7,6 @@ echo ""
 echo "Starting the installation process, hold on to your butts..."
 echo ""
 
-git clone git://github.com/tmaiaroto/li3_bootstrap.git .
+exec git clone git://github.com/tmaiaroto/li3_bootstrap.git .
 clear;
 _build/setup.sh;
