@@ -9,4 +9,4 @@ echo ""
 
 exec git clone git://github.com/tmaiaroto/li3_bootstrap.git .
 clear;
-_build/setup.sh;
+exec _build/setup.sh;
