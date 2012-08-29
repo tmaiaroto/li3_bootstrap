@@ -85,4 +85,11 @@ require __DIR__ . '/bootstrap/console.php';
  * Feel free to use this file if you like for your own application.
  */
 // require __DIR__ . '/bootstrap/menu.php';
+
+/**
+ * Sets up additional blocks and/or modifies default blocks.
+ * Feel free to use this file if you like for your own application.
+ * This file is also really good for reference.
+ */
+// require __DIR__ . '/bootstrap/blocks.php';
 ?>

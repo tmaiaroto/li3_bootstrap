@@ -2,16 +2,16 @@
 use li3b_core\models\BootstrapMenu as Menu;
 
 /**
- * Apply filters to Menu::static_menu() in order to alter and create new menus.
+ * Apply filters to Menu::staticMenu() in order to alter and create new menus.
  * The following is an example. You can apply this filter just about anywhere,
  * it does not need to be in this bootstrap file...Though, it's a pretty good
  * place. Another good place is under the bootstrap for your own libraries.
 */
 
 /*
-Menu::applyFilter('static_menu',  function($self, $params, $chain) {
+Menu::applyFilter('staticMenu',  function($self, $params, $chain) {
 	if($params['name'] == 'admin') {
-		$self::$static_menus['admin']['someKeyThatDeterminesMenuItemPositionOrderedAlphabetically'] = array(
+		$self::$staticMenus['admin']['someKeyThatDeterminesMenuItemPositionOrderedAlphabetically'] = array(
 			'title' => 'Menu Dropdown Title <b class="caret"></b>',
 			'url' => '#',
 			'activeIf' => array('controller' => 'example'),
