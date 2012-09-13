@@ -93,5 +93,4 @@ require __DIR__ . '/bootstrap/console.php';
  */
 // require __DIR__ . '/bootstrap/blocks.php';
 
-require __DIR__ . '/bootstrap/social.php';
 ?>
