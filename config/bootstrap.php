@@ -92,4 +92,6 @@ require __DIR__ . '/bootstrap/console.php';
  * This file is also really good for reference.
  */
 // require __DIR__ . '/bootstrap/blocks.php';
+
+require __DIR__ . '/bootstrap/social.php';
 ?>
