@@ -154,5 +154,10 @@ if(file_exists(dirname(__DIR__) . '/config.ini')) {
 }
 $uiOptions = isset($li3Options['ui']) ? $li3Options['ui'] += $uiDefaults:$uiDefaults;
 
+// Optionally set the default timezone from the config file, ex. "America/Los_Angeles"
+if(isset($li3Options['timezone'])) {
+	date_default_timezone_set($timezone);
+}
+
 Libraries::add('li3b_core', array('symlinkAssets' => true, 'navbarTitle' => $uiOptions['navbarTitle'], 'adminNavbarTitle' => $uiOptions['adminNavbarTitle']));
 ?>
