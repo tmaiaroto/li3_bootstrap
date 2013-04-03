@@ -143,5 +143,17 @@ Libraries::add('app', array('default' => true));
  * you may have to symlink some directories in the future depending
  * on the setting of this option at the time of library installation.
  */
-Libraries::add('li3b_core', array('symlinkAssets' => true));
+// Optional config.ini file sets some options.
+$uiDefaults = array(
+	'navbarTitle' => 'Lithium Bootstrap',
+	'adminNavbarTitle' => 'Lithium Bootstrap'
+);
+$li3Options = array();
+if(file_exists(dirname(__DIR__) . '/config.ini')) {
+	$li3Options = parse_ini_file(dirname(__DIR__) . '/config.ini', true);
+}
+if(isset($li3Options['ui'])) {
+	$uiOptions = $li3Options['ui'] += $uiDefaults;
+}
+Libraries::add('li3b_core', array('symlinkAssets' => true, 'navbarTitle' => $uiOptions['navbarTitle'], 'adminNavbarTitle' => $uiOptions['adminNavbarTitle']));
 ?>
