@@ -1,5 +1,6 @@
 libraries/*
 config/bootstrap/libraries/*
+config/bootstrap/connections/*
 config/config.ini
 resources/tmp/*
 webroot/_core
