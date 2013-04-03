@@ -152,8 +152,7 @@ $li3Options = array();
 if(file_exists(dirname(__DIR__) . '/config.ini')) {
 	$li3Options = parse_ini_file(dirname(__DIR__) . '/config.ini', true);
 }
-if(isset($li3Options['ui'])) {
-	$uiOptions = $li3Options['ui'] += $uiDefaults;
-}
+$uiOptions = isset($li3Options['ui']) ? $li3Options['ui'] += $uiDefaults:$uiDefaults;
+
 Libraries::add('li3b_core', array('symlinkAssets' => true, 'navbarTitle' => $uiOptions['navbarTitle'], 'adminNavbarTitle' => $uiOptions['adminNavbarTitle']));
 ?>
